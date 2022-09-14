@@ -2,3 +2,4 @@
 cypress/screenshots
 cypress/videos
 cypress/reports
+.envrc
