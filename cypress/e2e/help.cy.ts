@@ -25,7 +25,7 @@ describe('Check all commands', () => {
    it.only('checks version', () => {
     cy.exec('saleor info')
       .its('stdout')
-      .should('contain', ' Saleor Commerce CLI v1.14.0-rc.3')
+      .should('contain', ' Saleor Commerce CLI v1.14.0-rc.5')
    })
   })
   
