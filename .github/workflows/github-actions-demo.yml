@@ -25,7 +25,7 @@ jobs:
 
       - name: Cypress run full spec
         uses: cypress-io/github-action@v4
- 
+        env:
           CYPRESS_baseUrl: ${{ secrets.CYPRESS_BASEURL }}
           CYPRESS_USER_NAME: ${{ secrets.CYPRESS_USER_NAME }}
           CYPRESS_SECOND_USER_NAME: ${{ secrets.CYPRESS_SECOND_USER_NAME }}
