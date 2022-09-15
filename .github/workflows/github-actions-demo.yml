@@ -17,6 +17,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v1
 
+      - name: install pnpm
+        run: npm i -g pnpm@7.5.0
+
       - name: install CLI
         run: npm i -g @saleor/cli
 
