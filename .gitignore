@@ -3,3 +3,6 @@ cypress/screenshots
 cypress/videos
 cypress/reports
 .envrc
+testapp*
+my-saleor-app*
+.idea
