@@ -1,5 +1,2 @@
-/node_modules/
-cypress/screenshots
-cypress/videos
-cypress/reports
-.envrc
+node_modules/
+test-app/
