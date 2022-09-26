@@ -4,17 +4,22 @@ import rimraf from 'rimraf'
 import puppeteer from 'puppeteer'
 import fkill from 'fkill'
 
-import { Command } from '../src/command'
+import { Command, SALEOR_COMMAND } from '../src/command'
 import { sleep } from '../src/sleep'
 
 describe(`${Command.App} command`, () => {
   beforeEach(async () => {
     rimraf.sync('test-app')
-    await fkill(':3000')
+    await fkill(':3000', { silent: true })
   })
 
   it('creates app from template which is runnable', async () => {
-    const createAppCommand = await execa('saleor', [
+    console.log(process.cwd())
+    const { stdout } = await execa('cd .. && ls', {
+      shell: true,
+    })
+    console.log(stdout)
+    const createAppCommand = await execa(SALEOR_COMMAND, [
       Command.App,
       'create',
       'test-app',
