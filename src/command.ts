@@ -1,10 +1,13 @@
+export const SALEOR_COMMAND = process.env.SALEOR_CLI_PATH
+  ? `${process.env.SALEOR_CLI_PATH}`
+  : 'saleor'
+
 export enum Command {
   Help = 'help',
   Info = 'info',
   Login = 'login',
   Logout = 'logout',
   Configure = 'configure',
-  Register = 'register',
   Trigger = 'trigger',
   Organization = 'organization',
   Environment = 'environment',

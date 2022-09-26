@@ -2,13 +2,13 @@ import { describe, it, expect } from 'vitest'
 import { execa } from 'execa'
 import { EOL } from 'os'
 
-import { Command } from '../src/command'
+import { Command, SALEOR_COMMAND } from '../src/command'
 
 describe(`${Command.Help} command`, () => {
   it('lists all available commands', async () => {
     const allCommands = Object.values(Command).filter((c) => c != Command.Help)
 
-    const helpCommand = await execa('saleor', [Command.Help])
+    const helpCommand = await execa(SALEOR_COMMAND, [Command.Help])
 
     expect(helpCommand.exitCode).toEqual(0)
     allCommands.forEach((command) => {
@@ -17,7 +17,7 @@ describe(`${Command.Help} command`, () => {
   })
 
   it('lists description for selected commands', async () => {
-    const helpCommand = await execa('saleor', [Command.Help])
+    const helpCommand = await execa(SALEOR_COMMAND, [Command.Help])
     const lines = helpCommand.stdout.split(EOL)
 
     const infoCommand = lines.find((line) =>
@@ -40,11 +40,6 @@ describe(`${Command.Help} command`, () => {
     )
     expect(configureCommand).toContain('Configure Saleor CLI')
 
-    const registerCommand = lines.find((line) =>
-      line.includes(`${'saleor'} ${Command.Register}`),
-    )
-    expect(registerCommand).toContain('Create Saleor account')
-
     const triggerCommand = lines.find((line) =>
       line.includes(`${'saleor'} ${Command.Trigger}`),
     )
@@ -52,7 +47,7 @@ describe(`${Command.Help} command`, () => {
   })
 
   it('lists aliases for selected commands', async () => {
-    const helpCommand = await execa('saleor', [Command.Help])
+    const helpCommand = await execa(SALEOR_COMMAND, [Command.Help])
     const lines = helpCommand.stdout.split(EOL)
 
     const organizationCommand = lines.find((line) =>
@@ -82,7 +77,7 @@ describe(`${Command.Help} command`, () => {
   })
 
   it('lists all available options', async () => {
-    const helpCommand = await execa('saleor', [Command.Help])
+    const helpCommand = await execa(SALEOR_COMMAND, [Command.Help])
     const lines = helpCommand.stdout.split(EOL)
 
     const jsonOutputOption = lines.find((line) => line.includes('--json'))
